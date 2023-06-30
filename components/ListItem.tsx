@@ -1,0 +1,34 @@
+'use client'
+
+import React, { useCallback } from "react";
+import Image from 'next/image'
+import { useRouter } from "next/navigation"
+import {FaPlay} from 'react-icons/fa'
+
+interface ListItemProps{
+    name: string;
+    image: string;
+    href:string
+}
+
+const ListItem : React.FC<ListItemProps> = ({name, image, href}) => {
+    const router = useRouter()
+    const onClick = useCallback(() => {
+        // check if user exist
+
+        router.push(href)
+    }, [])
+    return (
+        <button onClick={onClick} className="relative group flex items-center rounded-md overflow-hidden gap-x-4 bg-neutral-100/10 cursor-pointer hover:bg-neutral-100/20 transition pr-4">
+            <div className="relative min-h-[64px] min-w-[64px]">
+                <Image src={image} className="object-cover" fill alt="Image" />
+            </div>
+            <p className="font-medium truncate py-5">{name}</p>
+            <div className="absolute transition right-5 opacity-0 group-hover:opacity-100 rounded-full flex items-center justify-center bg-green-500 p-3 drop-shadow-md hover:scale-110">
+                <FaPlay />
+            </div>
+        </button>
+    )
+}
+
+export default ListItem

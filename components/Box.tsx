@@ -1,7 +1,8 @@
 'use client'
 
 
-import React from "react"
+import { UserContext } from "@/app/hooks/useUser";
+import React, { useContext } from "react"
 import { twMerge } from "tailwind-merge";
 
 interface BoxProps{

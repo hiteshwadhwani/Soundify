@@ -1,8 +1,10 @@
+'use client'
+
 import {useState, useEffect, createContext, useContext, use} from 'react'
 import { useUser as useSupaUser, useSessionContext, User } from '@supabase/auth-helpers-react'
 import {Subscription, UserDetails} from '@/types'
 
-type UserContextType =  {
+type UserContextType = {
     accessToken : string | null;
     user: User | null;
     userDetails :UserDetails | null;

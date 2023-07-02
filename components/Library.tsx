@@ -1,9 +1,19 @@
+import useAuthModal from '@/app/hooks/useAuth'
+import useUploadModal from '@/app/hooks/useUploadModal'
+import { UserContext } from '@/app/hooks/useUser'
+import { useContext } from 'react'
 import {AiOutlinePlus} from 'react-icons/ai'
 import {TbPlaylist} from 'react-icons/tb'
 
 const Library = () => {
+    const uploadModal = useUploadModal()
+    const authModal = useAuthModal()
+    const context = useContext(UserContext)
     const onClick = () => {
-        // click to do something
+        if(context?.user === null){
+            return authModal.onOpen()
+        }
+        return uploadModal.onOpen()
     }
     return (
         <div className="flex flex-col gap-y-2 px-5 py-4">
@@ -12,7 +22,7 @@ const Library = () => {
                     <TbPlaylist size={26} className='text-neutral-400' />
                     <p className='text-neutral-400 text-md font-medium'>Your Library</p>
                 </div>
-                <AiOutlinePlus size={26} className='text-neutral-400 hover:text-white cursor-pointer transition' />
+                <AiOutlinePlus onClick={onClick} size={26} className='text-neutral-400 hover:text-white cursor-pointer transition' />
             </div>
             <div>
                 songs

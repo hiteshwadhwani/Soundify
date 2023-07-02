@@ -13,6 +13,7 @@ import {UserContext, useUser} from '@/app/hooks/useUser'
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { error } from "console";
 import { toast } from "react-hot-toast";
+import useUploadModal from "@/app/hooks/useUploadModal";
 
 interface HeaderProps{
     children: React.ReactNode;

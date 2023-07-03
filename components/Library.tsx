@@ -1,11 +1,19 @@
+'use client'
+
 import useAuthModal from '@/app/hooks/useAuth'
 import useUploadModal from '@/app/hooks/useUploadModal'
 import { UserContext } from '@/app/hooks/useUser'
-import { useContext } from 'react'
+import { Song } from '@/types'
+import React, { useContext } from 'react'
 import {AiOutlinePlus} from 'react-icons/ai'
 import {TbPlaylist} from 'react-icons/tb'
+import MediaItem from "./MediaItem"
 
-const Library = () => {
+interface LibraryProps{
+    songs: Song[]
+}
+
+const Library: React.FC<LibraryProps> = ({songs}) => {
     const uploadModal = useUploadModal()
     const authModal = useAuthModal()
     const context = useContext(UserContext)
@@ -25,7 +33,11 @@ const Library = () => {
                 <AiOutlinePlus onClick={onClick} size={26} className='text-neutral-400 hover:text-white cursor-pointer transition' />
             </div>
             <div>
-                songs
+                {
+                    songs.map((item) => (
+                        <MediaItem key={item.id} data={item} />
+                    ))
+                }
             </div>
         </div>
     )

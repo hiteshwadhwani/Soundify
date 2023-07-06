@@ -57,7 +57,7 @@ const LikeButton: React.FC<LikeButton> = ({ songId }) => {
       } else {
         setIsLiked(false);
       }
-    //   router.refresh();
+      router.refresh();
     } else {
       const { error } = await supabaseClient.from("liked_songs").insert({
         song_id: songId,
@@ -68,7 +68,7 @@ const LikeButton: React.FC<LikeButton> = ({ songId }) => {
       } else {
         setIsLiked(true);
       }
-    //   router.refresh();
+      router.refresh();
     }
   };
 

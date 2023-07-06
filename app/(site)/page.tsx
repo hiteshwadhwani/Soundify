@@ -16,7 +16,7 @@ export default async function  Home() {
           </h1>
         </div>
         <div className="grid md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4">
-          <ListItem name="Liked Songs" image="/images/liked.png" href="liked" />
+          <ListItem name="Liked Songs" image="/images/liked.png" href="/liked" />
         </div>
       </Header>
       <div className="mt-2 mb-7 px-6">
